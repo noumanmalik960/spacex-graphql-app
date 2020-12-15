@@ -1,17 +1,16 @@
-import React from "react";
+import * as React from "react";
 import { useLaunchListQuery } from "../../generated/graphql";
-import LaunchList from "./LaunchList";
-import { OwnProps } from "./LaunchList";
+import LaunchList, { OwnProps } from "./LaunchList";
 
 const LaunchListContainer = (props: OwnProps) => {
-  const { loading, error, data } = useLaunchListQuery();
+  const { data, error, loading } = useLaunchListQuery();
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error || !data) {
-    return <div>ERROR!!</div>;
+    return <div>ERROR</div>;
   }
 
   return <LaunchList data={data} {...props} />;
